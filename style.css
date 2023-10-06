@@ -1,0 +1,335 @@
+/* Page configs and variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  font-family: "Mulish", sans-serif;
+  font-size: 62.5%; /* With that, I can work with 10px being equal to 1rem */
+
+  /* Here, there will be some color variables, for use throughout the project */
+  --brand-colors-explorer-dark: hsl(195, 91%, 25%);
+  --brand-colors-explorer-bright: hsl(195, 46%, 40%);
+  --brand-colors-explorer-brightest: hsl(195, 46%, 40%);
+  --colors-base-white: hsl(0, 0%, 100%);
+  --colors-text-primary: hsl(240, 6%, 13%);
+  --colors-text-secondary: hsl(240, 5%, 7%);
+}
+
+html,
+body,
+input {
+  font-family: "Mulish", sans-serif;
+}
+
+body {
+  background-color: var(--colors-base-white);
+}
+
+/* Header */
+header {
+  display: flex;
+  width: 100%;
+  height: 7.2rem;
+  padding: 1.2rem 2.8rem;
+  align-items: center;
+  gap: 2.4rem;
+
+  background-color: var(--brand-colors-explorer-dark);
+}
+
+header form {
+  flex: 1;
+}
+
+.input-wrapper label {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 1.6rem;
+
+  background-color: var(--brand-colors-explorer-bright);
+  border: 0;
+  border-radius: 0.6rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.input-wrapper input::placeholder {
+  color: var(--colors-base-white);
+}
+
+.avatar {
+  width: 4.2rem;
+  height: 4.2rem;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+}
+
+/* Article image */
+
+.article-image img {
+  width: 100%;
+}
+
+/* Main */
+
+.section-buttons {
+  display: flex;
+  gap: 1rem;
+
+  margin-top: 0.8rem;
+  margin-bottom: 3.2rem;
+}
+.section-buttons button {
+  background-color: var(--brand-colors-explorer-dark);
+
+  justify-content: center;
+  align-items: center;
+
+  height: 4rem;
+  width: 4rem;
+
+  border-radius: 50%;
+
+  border: none;
+}
+
+main article h1 {
+  color: var(--colors-text-primary);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 160%;
+}
+
+main article p {
+  color: var(--colors-text-secondary);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 160%;
+}
+
+.related-articles {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3.2rem;
+}
+
+figure {
+  display: flex;
+  flex-direction: row;
+
+  gap: 1.6rem;
+}
+figure div {
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 16rem;
+
+  height: 8rem;
+  overflow: hidden;
+}
+figure div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+figure .details {
+  flex: 1;
+}
+
+.related-articles h1 {
+  color: var(--colors-text-primary);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 160%;
+}
+
+.related-articles h2 {
+  color: var(--colors-text-primary);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 160%;
+}
+
+.related-articles h3 {
+  color: var(--colors-text-secondary);
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 160%;
+}
+
+.sidebar {
+  padding: 0 2.4rem 3.8rem 2.4rem;
+}
+
+.written-article {
+  padding: 3.2rem 2.4rem 3.8rem 2.4rem;
+}
+
+/* Footer */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 6.4rem;
+  padding: 1.6rem;
+  width: 100%;
+  background-color: var(--brand-colors-explorer-bright);
+}
+
+footer h4 {
+  color: var(--colors-base-white);
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+/* Animations */
+
+header {
+  --startY: -100%;
+  animation: move 0.2s;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(var(--startY));
+  }
+}
+
+main .article-image {
+  animation: slideout 2s;
+}
+@keyframes slideout {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
+main article h1 {
+  animation: bouncein 1s;
+}
+
+@keyframes bouncein {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
+main article .section-buttons {
+  animation: tada 3s;
+}
+@keyframes tada {
+  0%,
+  100% {
+    transform: translateY(0%);
+  }
+
+  33% {
+    transform: translateY(-40%);
+  }
+
+  66% {
+    transform: translateY(40%);
+  }
+}
+
+.item {
+  --delay: 0.4s;
+  animation: appear 0.4s var(--delay) backwards;
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@media (min-width: 1120px) {
+  #app {
+    display: grid;
+
+    grid-template-areas:
+      "A A A A A"
+      "B B B C C"
+      "B B B C C"
+      "B B B C C"
+      "D D D D D";
+
+    height: 100vh;
+  }
+  #app header {
+    grid-area: A;
+  }
+  #app main {
+    grid-area: B;
+  }
+
+  #app .sidebar {
+    grid-area: C;
+  }
+
+  #app footer {
+    grid-area: D;
+  }
+  article .article-image img {
+    border-radius: 0.5rem;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 3.2rem;
+  }
+  .section-buttons {
+    margin: 0;
+  }
+
+  article {
+    margin: 4.4rem 3.4rem 4rem 11rem;
+
+    width: 80rem;
+  }
+
+  .related-articles {
+    display: flex;
+
+    width: 40rem;
+    margin: 4.4rem 11rem 30rem 0;
+  }
+
+  .related-articles figure img {
+    max-width: 15rem;
+    border-radius: 0.5rem;
+  }
+}
